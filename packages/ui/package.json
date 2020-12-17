@@ -1,0 +1,17 @@
+{
+  "name": "@biqi/ui",
+  "version": "0.0.1",
+  "description": "React UI",
+  "author": "jm<jinming1937@163.com>",
+  "contributors": [
+      {
+          "name": "jm",
+          "email": "jinming1937@163.com"
+      }
+  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "dependencies": {},
+  "keywords": [],
+  "license": "MIT"
+}

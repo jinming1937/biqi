@@ -1,0 +1,6 @@
+dist/
+node_modules/
+public/
+npm-offline-mirror
+config/
+script/

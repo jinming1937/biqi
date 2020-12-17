@@ -1,0 +1,27 @@
+@import '../../theme/basic.less';
+
+.@{prefixCls}-tagBox {
+  list-style: none;
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  border: none;
+  .@{prefixCls}-tagItem {
+    padding: 4px 12px;
+    display: inline-block;
+    border-radius: 12px;
+    color: #FFF;
+    line-height: 1;
+    margin-right: 5px;
+    cursor: pointer;
+    &.@{prefixCls}-supBlue {
+      background-color: #009aff;
+    }
+    &.@{prefixCls}-supGray {
+      background-color: #a2a2a2;
+    }
+    &.@{prefixCls}-supRed {
+      background-color: #ff9494;
+    }
+  }
+}
