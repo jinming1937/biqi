@@ -1,13 +1,10 @@
-// import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import FriendlyErrorsPlugin, {Severity} from 'friendly-errors-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import UglifyjsWebpackPlugin from 'uglifyjs-webpack-plugin'
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path'
 import webpack from 'webpack'
-const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 function resolve(dir: string): string {
 	return path.join(__dirname, '..', dir)
@@ -16,14 +13,14 @@ function resolve(dir: string): string {
 export default {
 	context: path.resolve(__dirname, '../'),
 	entry: {
-		main: './src/index.tsx'
+		main: './src/index.tsx',
 	},
 	output: {
-		library: 'BiQi',
-    filename: 'static/[name].[hash:8].js',
-    publicPath: '/ui/',
-    libraryTarget: 'var',
-    path: resolve('dist')
+		library: 'BiQiUI',
+		filename: 'static/[name].[hash:8].js',
+		publicPath: '/ui/',
+		libraryTarget: 'var',
+		path: resolve('dist'),
 	},
 	externals: {
 		react: 'React',
@@ -32,45 +29,61 @@ export default {
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.less', '.css'],
 		alias: {
-      '@': resolve('src'),
-      '@biqi/ui': resolve('packages/ui'),
+			'@': resolve('src'),
+			'@biqi/ui': resolve('packages/ui'),
 		},
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx|ts|tsx)$/,
+				test: /\.tsx?$/,
 				use: [
-          'cache-loader',
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              configFile: resolve('tsconfig.json'),
-              compilerOptions: {
-                module: 'commonjs',
-                target: 'es6',
-                jsx: 'react'
-              }
-            }
-          }
-        ],
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								[
+									'@babel/preset-env',
+									{
+										modules: false,
+										loose: true,
+										targets: {
+											browsers: ['> 1%', 'last 2 versions', 'not ie <= 8'],
+										},
+									},
+								],
+								'@babel/preset-react',
+							],
+							plugins: [
+								'@babel/plugin-transform-runtime',
+								['@babel/plugin-proposal-class-properties', {loose: false}],
+							],
+						},
+					},
+					{
+						loader: 'ts-loader',
+						options: {
+							configFile: resolve('tsconfig.json'),
+							compilerOptions: {module: 'EsNext', target: 'es2018'},
+						},
+					},
+				],
 				include: [resolve('src'), resolve('packages')],
-        exclude: [resolve('node_modules')],
+				exclude: [resolve('src/demos'), resolve('node_modules')],
 			},
 			{
 				test: /\.less$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: 'css-loader!less-loader?javascriptEnabled=true'
-				})
+					use: 'css-loader!less-loader?javascriptEnabled=true',
+				}),
 			},
 			{
 				test: /\.css$/,
 				use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
+					fallback: 'style-loader',
+					use: 'css-loader',
+				}),
 			},
 			{
 				test: /\.md(\?.*)?$/,
@@ -89,7 +102,7 @@ export default {
 		],
 	},
 	plugins: [
-    // new UglifyjsWebpackPlugin(),
+		// new UglifyjsWebpackPlugin(),
 		// new ForkTsCheckerWebpackPlugin({}),
 		// new ForkTsCheckerNotifierWebpackPlugin({
 		// 	title: 'TypeScript',
@@ -110,18 +123,18 @@ export default {
 		// // both options are optional
 		//     filename: "[name].css",
 		//     chunkFilename: "[id].css"
-    // }),
+		// }),
 
 		new HtmlWebpackPlugin({
-			title: '小鱼工具',
+			title: 'biqiui',
 			filename: 'index.html',
 			chunks: ['main'],
 			template: path.join(__dirname, 'index.html'),
 			inject: true,
-      favicon: resolve('favicon.ico'),
-      package_version: 'production.min'
-    }),
-    new OptimizeCSSPlugin(),
+			favicon: resolve('favicon.ico'),
+			package_version: 'production.min',
+		}),
+		new OptimizeCSSPlugin(),
 
 		// new FriendlyErrorsPlugin({
 		// 	compilationSuccessInfo: {
@@ -132,13 +145,7 @@ export default {
 		// 		console.error(errors)
 		// 	},
 		// }),
-		// new CopyWebpackPlugin([
-		//     {
-		//         from: resolve('static'),
-		//         to: 'static',
-		//         ignore: ['.*']
-		//     }
-		// ])
+		new CopyWebpackPlugin([{from: resolve('public/'), to: 'static/'}]),
 	],
 	mode: 'production',
 	optimization: {
