@@ -8,7 +8,6 @@ line.sh
 
 # 工具文件
 node_modules
-.npmignore
 .eslintrc.yaml
 package-lock.json
 package-erorr.log
