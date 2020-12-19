@@ -2,26 +2,28 @@
   "name": "biqi",
   "version": "1.0.0",
   "description": "Work hard, day day up",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "dev": "node --max-old-space-size=4096 ./node_modules/.bin/webpack-dev-server  --inline --progress --config ./build/webpack.dev.conf.ts",
     "start": "npm run dev",
-    "build:rm-conf": "rm -rf packages/ui/src/tsconfig.json",
-    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && npm run build:rm-conf",
+    "build:rm-conf": "rm packages/ui/src/tsconfig.json",
+    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && rm -rf packages/*/theme",
     "build:conf-es5": "ts-node ./build/makeConFile.ts ES5 lib",
     "build:conf-es6": "ts-node ./build/makeConFile.ts ES6 es",
-    "build:tsc": "tsc -d --project packages/ui/src",
-    "build:lib": "npm run build:conf-es5 && npm run build:tsc && npm run build:rm-conf",
-    "build:es": "npm run build:conf-es6 && npm run build:tsc && npm run build:rm-conf",
-    "build:ts": "rm -rf build:clean && npm run build:lib && npm run build:es",
-    "build": "npm run build:clean && webpack --config ./build/webpack.prod.conf.ts"
+    "build:tsc-lib": "tsc -d --project packages/ui/src --outDir packages/ui/lib",
+    "build:tsc-es": "tsc -d --project packages/ui/src --outDir packages/ui/es",
+    "build:lib": "npm run build:conf-es5 && npm run build:tsc-lib && npm run build:rm-conf",
+    "build:es": "npm run build:conf-es6 && npm run build:tsc-es && npm run build:rm-conf",
+    "build:ts": "npm run build:lib && npm run build:es",
+    "build:css": "webpack --config ./build/webpack.css.conf.ts",
+    "build": "npm run build:clean && npm run build:ts && npm run build:css && rm packages/ui/theme/main.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/jinming1937/biqi.git"
   },
   "keywords": [
-    "knowledge"
+    "react ui"
   ],
   "author": "jinming1937@163.com",
   "license": "MIT",

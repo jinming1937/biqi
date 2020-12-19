@@ -69,7 +69,7 @@ export default {
 					},
 				],
 				include: [resolve('src'), resolve('packages')],
-				exclude: [resolve('src/demos'), resolve('node_modules')],
+				exclude: [resolve('dist'), resolve('node_modules')],
 			},
 			{
 				test: /\.less$/,
@@ -102,12 +102,6 @@ export default {
 		],
 	},
 	plugins: [
-		// new UglifyjsWebpackPlugin(),
-		// new ForkTsCheckerWebpackPlugin({}),
-		// new ForkTsCheckerNotifierWebpackPlugin({
-		// 	title: 'TypeScript',
-		// 	excludeWarnings: false,
-		// }),
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"',
@@ -118,12 +112,6 @@ export default {
 			filename: './static/css/[name].[hash:8].css',
 			allChunks: true,
 		}),
-		// new MiniCssExtractPlugin({
-		// // Options similar to the same options in webpackOptions.output
-		// // both options are optional
-		//     filename: "[name].css",
-		//     chunkFilename: "[id].css"
-		// }),
 
 		new HtmlWebpackPlugin({
 			title: 'biqiui',
@@ -135,16 +123,6 @@ export default {
 			package_version: 'production.min',
 		}),
 		new OptimizeCSSPlugin(),
-
-		// new FriendlyErrorsPlugin({
-		// 	compilationSuccessInfo: {
-		// 		messages: [`Your application [toolbox] has built successlly!!!`],
-		// 		notes: [],
-		// 	},
-		// 	onErrors(_: Severity, errors: string) {
-		// 		console.error(errors)
-		// 	},
-		// }),
 		new CopyWebpackPlugin([{from: resolve('public/'), to: 'static/'}]),
 	],
 	mode: 'production',

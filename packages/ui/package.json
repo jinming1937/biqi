@@ -1,6 +1,6 @@
 {
   "name": "@biqi/ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React UI",
   "author": "jinming1937",
   "main": "lib/index.js",
@@ -11,5 +11,9 @@
     "url": "https://github.com/jinming1937/biqi/issues"
   },
   "homepage": "https://github.com/jinming1937/biqi#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jinming1937/biqi.git"
+  }
 }
