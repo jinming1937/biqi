@@ -15,5 +15,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jinming1937/biqi.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
