@@ -7,7 +7,7 @@
     "dev": "node --max-old-space-size=4096 ./node_modules/.bin/webpack-dev-server  --inline --progress --config ./build/webpack.dev.conf.ts",
     "start": "npm run dev",
     "build:rm-conf": "rm packages/ui/src/tsconfig.json",
-    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && rm -rf packages/*/theme",
+    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && rm -rf packages/*/dist",
     "build:conf-es5": "ts-node ./build/makeConFile.ts ES5 lib",
     "build:conf-es6": "ts-node ./build/makeConFile.ts ES6 es",
     "build:tsc-lib": "tsc -d --project packages/ui/src --outDir packages/ui/lib",
@@ -16,7 +16,7 @@
     "build:es": "npm run build:conf-es6 && npm run build:tsc-es && npm run build:rm-conf",
     "build:ts": "npm run build:lib && npm run build:es",
     "build:css": "webpack --config ./build/webpack.css.conf.ts",
-    "build": "npm run build:clean && npm run build:ts && npm run build:css && rm packages/ui/theme/main.js"
+    "build": "npm run build:clean && npm run build:ts && npm run build:css && rm packages/ui/dist/theme/main.js"
   },
   "repository": {
     "type": "git",

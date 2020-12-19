@@ -13,7 +13,7 @@ export default {
 		main: './packages/ui/src/theme/index.less',
 	},
 	output: {
-    path: path.resolve(__dirname, '../packages/ui/theme'),
+    path: path.resolve(__dirname, '../packages/ui/dist/theme'),
 	},
 	externals: {
 		react: 'React',

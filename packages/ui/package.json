@@ -1,12 +1,22 @@
 {
   "name": "@biqi/ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React UI",
   "author": "jinming1937",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "keywords": ["react ui"],
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "CONTRIBUTORS",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
   "bugs": {
     "url": "https://github.com/jinming1937/biqi/issues"
   },
@@ -15,8 +25,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jinming1937/biqi.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
   }
 }
