@@ -56,7 +56,7 @@ export default {
               configFile: resolve('tsconfig.json'),
               compilerOptions: {
                 module: 'commonjs',
-                target: 'es6',
+                target: 'es5',
                 jsx: 'react'
               }
             }

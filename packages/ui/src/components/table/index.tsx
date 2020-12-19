@@ -28,13 +28,13 @@ export class Table<T> extends React.Component<TableProps<T>, TableState> {
     return (
       <div className={getPrefixCls("theader")}>
         {columns.map((item, index) => {
-          const style = {
+          const style: React.CSSProperties = {
             textAlign: item.align || 'right'
           }
           if (item.width) {
-            Object.assign(style, {width: `${item.width}px`})
+            style.width = `${item.width}px`
           } else {
-            Object.assign(style, {flex: 1})
+            style.flex = 1
           }
           return <div className={getPrefixCls("columnItem")} key={`${item.dataIndex}-${index}`}>
             <div className={getPrefixCls("cell")} style={style}>{item.dataIndex}</div>
@@ -63,13 +63,13 @@ export class Table<T> extends React.Component<TableProps<T>, TableState> {
     const {columns} = this.props
     return <div key={index} className={getPrefixCls("rowItem")}>
       {columns.map((item, index) => {
-          const style = {
+          const style: React.CSSProperties = {
             textAlign: item.align || 'right'
           }
           if (item.width) {
-            Object.assign(style, {width: `${item.width}px`})
+            style.width = `${item.width}px`
           } else {
-            Object.assign(style, {flex: 1})
+            style.flex = 1
           }
           return <div className={getPrefixCls("columnItem")} key={`${item.dataIndex}-${index}`}>
             <div className={getPrefixCls("cell")} style={style}>{typeof item.render === 'function' ? item.render(rowData) : rowData[item.dataIndex]}</div>
