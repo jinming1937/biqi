@@ -111,7 +111,7 @@ export class Calendar extends Component<
 	 */
 	getMonthGroup(num = 1, date = new Date()) {
 		let monthArray = []
-		let cacheToDay = new Date(date)
+		let cacheToDay = new Date(Number(date))
 		while (num--) {
 			monthArray.push({
 				months: this.getDayGroup(cacheToDay),
@@ -149,10 +149,10 @@ export class Calendar extends Component<
 	 * @param {Date} date start date
 	 */
 	getDayGroup(date = new Date()) {
-		const today = new Date(date)
-		const firstDayOfMonth = new Date(new Date(date).setDate(1))
+		const today = new Date(Number(date))
+		const firstDayOfMonth = new Date(new Date(Number(date)).setDate(1))
 		const lastDay = getLastDateFromMonth(today.getFullYear(), today.getMonth())
-		const lastDayOfMonth = new Date(new Date(date).setDate(lastDay))
+		const lastDayOfMonth = new Date(new Date(Number(date)).setDate(lastDay))
 		const weekOfFirstDay = firstDayOfMonth.getDay()
 		const dateArray = []
 		const count =
@@ -162,7 +162,7 @@ export class Calendar extends Component<
 				? 42
 				: 35
 		for (let t = 0; t < count; t++) {
-			let beginDate = new Date(new Date(date).setDate(1 - weekOfFirstDay + t))
+			let beginDate = new Date(new Date(Number(date)).setDate(1 - weekOfFirstDay + t))
 			dateArray.push({
 				date:
 					beginDate.getFullYear() +

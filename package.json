@@ -6,9 +6,14 @@
   "scripts": {
     "dev": "node --max-old-space-size=4096 ./node_modules/.bin/webpack-dev-server  --inline --progress --config ./build/webpack.dev.conf.ts",
     "start": "npm run dev",
-    "build:clean": "rm -rf packages/*/lib && rm -rf dist && rm -rf lib",
-    "build:ts": "tsc --outDir packages/ui/lib",
-    "build:tsc": "tsc --project packages/ui",
+    "build:rm-conf": "rm -rf packages/ui/src/tsconfig.json",
+    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && npm run build:rm-conf",
+    "build:conf-es5": "ts-node ./build/makeConFile.ts ES5 lib",
+    "build:conf-es6": "ts-node ./build/makeConFile.ts ES6 es",
+    "build:tsc": "tsc -d --project packages/ui/src",
+    "build:lib": "npm run build:conf-es5 && npm run build:tsc && npm run build:rm-conf",
+    "build:es": "npm run build:conf-es6 && npm run build:tsc && npm run build:rm-conf",
+    "build:ts": "rm -rf build:clean && npm run build:lib && npm run build:es",
     "build": "npm run build:clean && webpack --config ./build/webpack.prod.conf.ts"
   },
   "repository": {

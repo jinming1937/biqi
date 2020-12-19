@@ -4,6 +4,7 @@
   "description": "React UI",
   "author": "jinming1937",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "keywords": ["react ui"],
   "bugs": {
