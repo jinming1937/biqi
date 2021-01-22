@@ -16,3 +16,41 @@ html, body {
   width: 100%;
   overflow: hidden;
 }
+
+.nav {
+  width: 100%;
+  height: 54px;
+  background: #1798ff;
+  color: #fdfdfd;
+  text-align: left;
+  padding: 0px 16px;
+  vertical-align: middle;
+  line-height: 54px;
+}
+.demo {
+  display: flex;
+  .menu {
+    width: 180px;
+    >li {
+      padding: 0 16px;
+      height: 34px;
+      line-height: 34px;
+      color: #333;
+      text-align: left;
+      > a {
+        color: #333;
+      }
+      &.active, &:hover {
+        cursor: pointer;
+        background-color: #63baff;
+        > a {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .content {
+    flex: 1;
+    padding: 8px 16px;
+  }
+}
