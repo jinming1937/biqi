@@ -28,8 +28,12 @@ const App = () => (
 
 导入样式：
 
+```jsx
+import '@biqi/ui/dist/theme/index.css';
+```
+
 ```less
-@import '../node_modeules/@biqi/theme/index.css';
+@import '../node_modeules/@biqi/ui/dist/theme/index.css';
 ```
 
 ### TypeScript

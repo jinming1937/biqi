@@ -1,0 +1,21 @@
+@import '../../theme/basic.less';
+
+.@{prefixCls}-divider {
+  &.@{prefixCls}-divider-vertical {
+    &::after {
+      width: 100%;
+      content: ' ';
+      border-right: 1px solid @sketch-bd-color-normal;
+    }
+  }
+
+  &.@{prefixCls}-divider-horizontal {
+    padding: 8px 0;
+    &::after {
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid @sketch-bd-color-normal;
+      content: ' ';
+    }
+  }
+}
