@@ -47,15 +47,7 @@ export class Table<T> extends React.Component<TableProps<T>, TableState> {
   }
   renderTableBody() {
     const {datasource} = this.props
-    return (
-      <div className={getPrefixCls('tbody')}>
-        {datasource.length > 0
-          ? datasource.map((rowData, index) => {
-              return this.renderRow(rowData, index)
-            })
-          : null}
-      </div>
-    )
+    return <div className={getPrefixCls('tbody')}>{datasource.length > 0 ? datasource.map((rowData, index) => this.renderRow(rowData, index)) : null}</div>
   }
 
   renderRow(rowData: T, index: number) {

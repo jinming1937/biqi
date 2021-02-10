@@ -171,42 +171,36 @@ export class Calendar extends Component<ICalendarProps, ICalendarState> {
                     </div> */}
         </div>
         <ul className={getPrefixCls('weekNav')}>
-          {this.state.weeks.map((item, index) => {
-            return (
-              <li key={index}>
-                <span>{item}</span>
-              </li>
-            )
-          })}
+          {this.state.weeks.map((item, index) => (
+            <li key={index}>
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
         <div className={getPrefixCls('daySelectBox')}>
-          {this.state.months.map((item: IMonths, index) => {
-            return (
-              <section className={getPrefixCls('monthArea')} key={index}>
-                <header className={getPrefixCls('monthTitle')}>{item.date}</header>
-                <ul className={getPrefixCls('dayArea')}>
-                  {item.months.map((it: IDates, ind) => {
-                    return (
-                      <li key={ind} className={+it.today - +item.today < 0 ? getPrefixCls('disabled') : it.date === this.state.defDate && !it.dayState ? getPrefixCls('active') : ''}>
-                        {!it.dayState ? (
-                          <span
-                            onClick={() => {
-                              console.log(it.date)
-                              this.setState({defDate: it.date})
-                              this.eventSelectDay({date: it.date, valide: +it.today - +item.today >= 0})
-                            }}>
-                            {it.day}
-                          </span>
-                        ) : (
-                          ''
-                        )}
-                      </li>
-                    )
-                  })}
-                </ul>
-              </section>
-            )
-          })}
+          {this.state.months.map((item: IMonths, index) => (
+            <section className={getPrefixCls('monthArea')} key={index}>
+              <header className={getPrefixCls('monthTitle')}>{item.date}</header>
+              <ul className={getPrefixCls('dayArea')}>
+                {item.months.map((it: IDates, ind) => (
+                  <li key={ind} className={+it.today - +item.today < 0 ? getPrefixCls('disabled') : it.date === this.state.defDate && !it.dayState ? getPrefixCls('active') : ''}>
+                    {!it.dayState ? (
+                      <span
+                        onClick={() => {
+                          console.log(it.date)
+                          this.setState({defDate: it.date})
+                          this.eventSelectDay({date: it.date, valide: +it.today - +item.today >= 0})
+                        }}>
+                        {it.day}
+                      </span>
+                    ) : (
+                      ''
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
         </div>
       </div>
     )

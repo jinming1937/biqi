@@ -27,21 +27,19 @@ const Page = {
   [EPage.input]: Demo.Input
 }
 
-const home = () => {
-  return <div>122</div>
-}
+const home = () => <div>home</div>
 
-const LeftMenu = () => {
-  return (
-    <ul className="menu">
-      {MenuList.map((item, index) => (
-        <li key={index} className={classnames({active: window.location.pathname === item.link})}>
-          <Link to={item.link}>{item.name}</Link>
-        </li>
-      ))}
-    </ul>
-  )
-}
+const LeftMenu = () => (
+  <ul className="menu">
+    {MenuList.map((item, index) => (
+      <li key={index}>
+        <Link className={classnames({active: window.location.pathname === item.link})} to={item.link}>
+          {item.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+)
 
 export default class App extends React.Component {
   render() {
@@ -50,7 +48,7 @@ export default class App extends React.Component {
         <nav className="nav">
           <h3>@biqi UI</h3>
         </nav>
-        <div className="demo">
+        <div className="section">
           <LeftMenu />
           <div className="content">
             <Switch>

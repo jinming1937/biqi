@@ -25,3 +25,5 @@ export const getLastDateFromMonth = (y: number, m: number) => {
       return 31
   }
 }
+
+export const safeExecFunc = <T>(p: T, f?: (p: T) => any) => typeof f === 'function' && f(p)

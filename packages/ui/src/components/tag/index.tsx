@@ -29,13 +29,11 @@ export class Tag<T> extends React.PureComponent<TagProps<T>, TagState> {
     const {datasource, style = {}} = this.props
     return (
       <ul className={getPrefixCls('tagBox')} style={style}>
-        {datasource.map((item, index) => {
-          return (
-            <li onClick={() => this.onSelectTag(item, index)} key={index} className={classnames(getPrefixCls('tagItem'), this.getColor(index))}>
-              #{item}
-            </li>
-          )
-        })}
+        {datasource.map((item, index) => (
+          <li onClick={() => this.onSelectTag(item, index)} key={index} className={classnames(getPrefixCls('tagItem'), this.getColor(index))}>
+            #{item}
+          </li>
+        ))}
       </ul>
     )
   }

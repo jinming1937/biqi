@@ -28,7 +28,7 @@ const tsconfig = {
 }
 
 // 写入文件内容（如果文件不存在会创建一个文件）
-fs.writeFile('./packages/ui/src/tsconfig.json', JSON.stringify(tsconfig), function (err) {
+fs.writeFile('./packages/ui/src/tsconfig.json', JSON.stringify(tsconfig), err => {
   if (err) {
     throw err
   }
@@ -36,7 +36,7 @@ fs.writeFile('./packages/ui/src/tsconfig.json', JSON.stringify(tsconfig), functi
   console.log('\n ======= Bingo!!! The file of tsconfig.json has been created!!! ======= \n')
 
   // 写入成功后读取测试
-  fs.readFile('./packages/ui/src/tsconfig.json', 'utf-8', function (err, data) {
+  fs.readFile('./packages/ui/src/tsconfig.json', 'utf-8', (err, data) => {
     if (err) {
       throw err
     }

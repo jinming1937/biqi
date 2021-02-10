@@ -1,5 +1,6 @@
 export * from './components/bubble'
 export * from './components/calendar'
+export * from './components/divider'
 export * from './components/input'
 export * from './components/tabs'
 export * from './components/tag'

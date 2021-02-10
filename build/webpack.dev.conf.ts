@@ -122,7 +122,7 @@ export default {
 
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
-        messages: [`Your application [sale] is running here: http://${getIPAdress()}:${PORT}`],
+        messages: [`Your application [biqi] is running here: http://${getIPAdress()}:${PORT}`],
         notes: []
       },
       onErrors(_: Severity, errors: string) {

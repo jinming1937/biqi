@@ -37,6 +37,8 @@ module.exports = {
   rules: {
     camelcase: ['error', {properties: 'never'}],
     'prettier/prettier': 'error',
+    'arrow-body-style': ['error', 'as-needed'],
+    'prefer-arrow-callback': 'error',
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

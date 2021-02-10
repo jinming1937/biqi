@@ -1,12 +1,14 @@
 {
   "name": "@biqi/ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React UI",
   "author": "jinming1937",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "lib/index.d.ts",
-  "keywords": ["react ui"],
+  "keywords": [
+    "react ui"
+  ],
   "files": [
     "dist",
     "es",
