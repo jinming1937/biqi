@@ -1,5 +1,5 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+// import HtmlWebpackPlugin from 'html-webpack-plugin'
 import UglifyjsWebpackPlugin from 'uglifyjs-webpack-plugin'
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -13,11 +13,12 @@ function resolve(dir: string): string {
 export default {
   context: path.resolve(__dirname, '../'),
   entry: {
-    main: './src/index.tsx'
+    biqi: './packages/ui/index.ts',
+    style: './packages/ui/src/theme/index.less'
   },
   output: {
-    library: 'BiQiUI',
-    filename: 'static/[name].[hash:8].js',
+    library: 'BiQi',
+    filename: '[name].mini.js',
     publicPath: '/ui/',
     libraryTarget: 'var',
     path: resolve('dist')
@@ -82,10 +83,10 @@ export default {
           use: 'css-loader'
         })
       },
-      {
-        test: /\.md(\?.*)?$/,
-        loaders: ['html-loader', 'markdown-loader']
-      },
+      // {
+      //   test: /\.md(\?.*)?$/,
+      //   loaders: ['html-loader', 'markdown-loader']
+      // },
       {
         test: /\.(jpeg|jpg|png|gif|svg)$/,
         loaders: ['url-loader?limit=10000&name=static/img/[name].[hash:8].[ext]']
@@ -97,28 +98,36 @@ export default {
     ]
   },
   plugins: [
+    new UglifyjsWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
 
+    // new ExtractTextPlugin({
+    //   filename: './static/css/[name].[hash:8].css',
+    //   allChunks: true
+    // }),
+
+    // new HtmlWebpackPlugin({
+    //   title: 'biqiui',
+    //   filename: 'index.html',
+    //   chunks: ['main'],
+    //   template: path.join(__dirname, 'index.html'),
+    //   inject: true,
+    //   favicon: resolve('favicon.ico'),
+    //   package_version: 'production.min'
+    // }),
     new ExtractTextPlugin({
-      filename: './static/css/[name].[hash:8].css',
+      filename: './index.mini.css',
       allChunks: true
     }),
-
-    new HtmlWebpackPlugin({
-      title: 'biqiui',
-      filename: 'index.html',
-      chunks: ['main'],
-      template: path.join(__dirname, 'index.html'),
-      inject: true,
-      favicon: resolve('favicon.ico'),
-      package_version: 'production.min'
-    }),
-    new OptimizeCSSPlugin(),
-    new CopyWebpackPlugin([{from: resolve('public/'), to: 'static/'}])
+    new OptimizeCSSPlugin()
+    // new CopyWebpackPlugin([
+    //   {from: resolve('dist/biqi.mini.js'), to: resolve('packages/ui/dist/')},
+    //   {from: resolve('dist/index.css'), to: resolve('packages/ui/dist/theme/')},
+    // ])
   ],
   mode: 'production',
   optimization: {

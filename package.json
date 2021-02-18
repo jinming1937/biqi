@@ -12,7 +12,7 @@
     "fixAll": "npm run fixStyle && npm run fixCode",
     "lint": "eslint 'packages/ui/src/**/*.{js,jsx,ts,tsx}'",
     "build:rm-conf": "rm packages/ui/src/tsconfig.json",
-    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && rm -rf packages/*/dist",
+    "build:clean": "rm -rf packages/*/lib && rm -rf packages/*/es && rm -rf packages/*/dist && rm -rf dist",
     "build:conf-es5": "ts-node ./build/makeConFile.ts ES5 lib",
     "build:conf-es6": "ts-node ./build/makeConFile.ts ES6 es",
     "build:tsc-lib": "tsc -d --project packages/ui/src --outDir packages/ui/lib",
@@ -20,8 +20,10 @@
     "build:lib": "npm run build:conf-es5 && npm run build:tsc-lib && npm run build:rm-conf",
     "build:es": "npm run build:conf-es6 && npm run build:tsc-es && npm run build:rm-conf",
     "build:ts": "npm run build:lib && npm run build:es",
+    "build:js": "webpack --config ./build/webpack.prod.conf.ts",
+    "mvfile": "mkdir -p packages/ui/dist/theme && mv dist/biqi.mini.js packages/ui/dist/ && mv dist/index.mini.css packages/ui/dist/theme/ && rm -rf dist",
     "build:css": "webpack --config ./build/webpack.css.conf.ts",
-    "build": "npm run build:clean && npm run build:ts && npm run build:css && rm packages/ui/dist/theme/main.js"
+    "build": "npm run build:clean && npm run build:ts && npm run build:js && npm run mvfile"
   },
   "repository": {
     "type": "git",
