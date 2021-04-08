@@ -6,7 +6,8 @@ import * as Demo from './page'
 export enum EPage {
   bubble = 'bubble',
   calendar = 'calendar',
-  input = 'input'
+  input = 'input',
+  page = 'page'
 }
 
 export type IMenuItem = {
@@ -18,13 +19,15 @@ export type IMenuItem = {
 export const MenuList: IMenuItem[] = [
   {name: '气泡', link: '/bubble', page: EPage.bubble},
   {name: '日历', link: '/calendar', page: EPage.calendar},
-  {name: '文本框', link: '/input', page: EPage.input}
+  {name: '文本框', link: '/input', page: EPage.input},
+  {name: '分页', link: '/page', page: EPage.page}
 ]
 
 const Page = {
   [EPage.bubble]: Demo.Bubble,
   [EPage.calendar]: Demo.Calendar,
-  [EPage.input]: Demo.Input
+  [EPage.input]: Demo.Input,
+  [EPage.page]: Demo.Page
 }
 
 const home = () => <div>home</div>

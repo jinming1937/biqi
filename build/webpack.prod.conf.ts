@@ -1,14 +1,10 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-// import HtmlWebpackPlugin from 'html-webpack-plugin'
 import UglifyjsWebpackPlugin from 'uglifyjs-webpack-plugin'
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+// import CopyWebpackPlugin from 'copy-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
-
-function resolve(dir: string): string {
-  return path.join(__dirname, '..', dir)
-}
+import {resolve} from './util'
 
 export default {
   context: path.resolve(__dirname, '../'),
