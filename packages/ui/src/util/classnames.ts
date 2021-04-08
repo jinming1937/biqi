@@ -1,7 +1,9 @@
 type ClassValue = {[key: string]: boolean} | string | undefined
 
 export const classnames = (...classValues: ClassValue[]) => {
-  if (classValues.length === 0) return ''
+  if (classValues.length === 0) {
+    return ''
+  }
   return classValues
     .map((classes: ClassValue) => {
       switch (typeof classes) {
@@ -13,6 +15,7 @@ export const classnames = (...classValues: ClassValue[]) => {
         case 'string':
           return classes
         case 'undefined':
+        default:
           return ''
       }
     })

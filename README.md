@@ -5,19 +5,19 @@
 * 安装
 
 ```bash
- npm i
+ yarn install
 ```
 
 * 运行
 
 ```bash
- npm run dev
+ yarn dev
 ```
 
 * 构建
 
 ```bash
- npm run build
+ yarn build
 ```
 
 * 版本(/packages/ui下)

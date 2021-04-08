@@ -1,5 +1,5 @@
 import React from 'react'
-import {classnames, getPrefixCls} from '../../util'
+import {getPrefixCls} from '../../util'
 
 export type IAlign = 'center' | 'left' | 'right'
 
@@ -7,7 +7,7 @@ export interface IColumns<T> {
   width?: number
   dataIndex: keyof T
   align?: IAlign
-  render?: (row: T) => JSX.Element | string | null
+  render?: (row?: T) => JSX.Element | string | null
 }
 
 export interface TableProps<T> {

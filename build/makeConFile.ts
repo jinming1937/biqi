@@ -2,7 +2,7 @@
 import fs from 'fs'
 
 const args = process.argv.splice(2)
-const [esVersion, outDir] = args
+const [esVersion] = args
 
 console.log('\n', 'cmd args:', args, '\n')
 

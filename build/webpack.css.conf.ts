@@ -2,10 +2,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
-
-function resolve(dir: string): string {
-  return path.join(__dirname, '..', dir)
-}
+import {resolve} from './util'
 
 export default {
   context: path.resolve(__dirname, '../'),
