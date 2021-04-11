@@ -7,7 +7,7 @@ export interface IColumns<T> {
   width?: number
   dataIndex: keyof T
   align?: IAlign
-  render?: (row?: T) => JSX.Element | string | null
+  render?: (row: T) => JSX.Element | string | null
 }
 
 export interface TableProps<T> {
