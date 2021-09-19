@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ['prettier'],
   // extends: ['prettier'],
+  extends: ['plugin:@typescript-eslint/eslint-plugin'],
   env: {
     // 对一个环境定义的一组全局变量的预设（类似于 babel 的 presets）
     amd: true,
@@ -38,6 +39,15 @@ module.exports = {
     camelcase: ['error', {properties: 'never'}],
     'prettier/prettier': 'error',
     'arrow-body-style': ['error', 'as-needed'],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+        varsIgnorePattern: '^_$'
+      }
+    ],
     'prefer-arrow-callback': 'error',
     // allow async-await
     'generator-star-spacing': 'off',
