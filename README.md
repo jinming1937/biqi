@@ -38,6 +38,8 @@
   npm publish
 ```
 
+* link
+
 ```bash
-npm link /Users/jinming/projCom/biqi/packages/ui/
+npm link /xxx/biqi/packages/ui/
 ```
