@@ -9,13 +9,16 @@
       min-width: 34px;
       height: 34px;
       padding: 0 8px;
-      margin-right: 8px;
       border: 1px solid #e0e0e0;
       border-radius: 4px;
       line-height: 34px;
       text-align: center;
       color: @sketch-txt-color-normal;
       cursor: pointer;
+
+      &:not(&:last-child) {
+        margin-right: 8px;
+      }
     }
 
     .@{prefixCls}-page-arrow-left {
@@ -40,6 +43,7 @@
 
     .@{prefixCls}-page-item-disabled {
       color: @sketch-txt-color-disabled;
+      cursor: no-drop;
     }
 
     .@{prefixCls}-page-apostrophe-cell {
