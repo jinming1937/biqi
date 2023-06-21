@@ -8,7 +8,8 @@ export enum EPage {
   calendar = 'calendar',
   input = 'input',
   page = 'page',
-  table = 'table'
+  table = 'table',
+  button = 'button'
 }
 
 export type IMenuItem = {
@@ -22,7 +23,8 @@ export const MenuList: IMenuItem[] = [
   {name: '日历', link: '/calendar', page: EPage.calendar},
   {name: '文本框', link: '/input', page: EPage.input},
   {name: '分页', link: '/page', page: EPage.page},
-  {name: '表格', link: '/table', page: EPage.table}
+  {name: '表格', link: '/table', page: EPage.table},
+  {name: '按钮', link: '/button', page: EPage.button}
 ]
 
 const Page = {
@@ -30,7 +32,8 @@ const Page = {
   [EPage.calendar]: Demo.Calendar,
   [EPage.input]: Demo.Input,
   [EPage.page]: Demo.Page,
-  [EPage.table]: Demo.Table
+  [EPage.table]: Demo.Table,
+  [EPage.button]: Demo.Button
 }
 
 const home = () => <div>home</div>

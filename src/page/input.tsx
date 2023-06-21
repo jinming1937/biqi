@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback, useState} from 'react'
-import {Input, Divider} from '@biqi/ui'
+import {Input, Divider, Button} from '@biqi/ui'
 
 export const Demo = () => {
   const ref = React.useRef<HTMLInputElement>(null)
@@ -29,7 +29,7 @@ export const Demo = () => {
       <Divider>
         <h3>ref</h3>
       </Divider>
-      <button onClick={onClick}>11111</button>
+      <Button onClick={onClick}>11111</Button>
       <Input value="" ref={ref} placeholder="自动获取焦点" />
     </div>
   )

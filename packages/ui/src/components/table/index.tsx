@@ -4,9 +4,9 @@ import {getPrefixCls} from '../../util'
 export type IAlign = 'center' | 'left' | 'right'
 
 export interface IColumns<T> {
+  dataIndex: string & keyof T
   title?: string
   width?: number
-  dataIndex?: keyof T
   align?: IAlign
   render?: (row: T) => JSX.Element | string | null
 }
@@ -55,7 +55,7 @@ export class Table<T> extends React.Component<TableProps<T>, TableState> {
     const {columns} = this.props
     return (
       <div key={index} className={getPrefixCls('rowItem')}>
-        {columns.map((item, index) => {
+        {columns.map((item, ind) => {
           const style: React.CSSProperties = {
             textAlign: item.align || 'right'
           }
@@ -65,7 +65,7 @@ export class Table<T> extends React.Component<TableProps<T>, TableState> {
             style.flex = 1
           }
           return (
-            <div className={getPrefixCls('columnItem')} key={`${item.dataIndex}-${index}`}>
+            <div className={getPrefixCls('columnItem')} key={`${item.dataIndex}-${ind}`}>
               <div className={getPrefixCls('cell')} style={style}>
                 {typeof item.render === 'function' ? item.render(rowData) : item.dataIndex ? rowData[item.dataIndex] : ''}
               </div>
